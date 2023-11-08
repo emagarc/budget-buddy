@@ -1,18 +1,19 @@
-package entities;
-import java.time.LocalDate;
-import java.util.List;
+package entities.expense;
+
 
 public class Expense {
+    private static int globalIdCounter = 1;
     private Integer id;
     private Double amount;
-    private ExpenseCategory category;
+    private String category;
     private String date;
 
     public Expense() {
+        this.id = generateUniqueId();
     }
 
-    public Expense(Integer id, Double amount, ExpenseCategory category, String date) {
-        this.id = id;
+    public Expense(Double amount, String category, String date) {
+        this.id = generateUniqueId();
         this.amount = amount;
         this.category = category;
         this.date = date;
@@ -34,11 +35,11 @@ public class Expense {
         this.amount = amount;
     }
 
-    public ExpenseCategory getCategory() {
+    public String getCategory() {
         return category;
     }
 
-    public void setCategory(ExpenseCategory category) {
+    public void setCategory(String category) {
         this.category = category;
     }
 
@@ -48,6 +49,10 @@ public class Expense {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    private static synchronized int generateUniqueId() {
+        return globalIdCounter++;
     }
 
     @Override

@@ -1,5 +1,5 @@
-import entities.Expense;
-import entities.ExpenseCategory;
+import entities.expense.Expense;
+import entities.expense.ExpenseCategory;
 import exception.InvalidExpenseException;
 import interfaces.ExpenseAmountValidator;
 import interfaces.ExpenseAmountValidatorImpl;
@@ -59,7 +59,7 @@ public class BudgetBuddy {
 
             expense.setId(counter);
             expense.setAmount(amount);
-            expense.setCategory(category);
+            //expense.setCategory(category);
             expense.setDate(date);
 
             expenses[index] = expense;

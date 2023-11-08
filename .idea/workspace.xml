@@ -5,21 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4172305a-2cf4-4810-ac01-5fa73c92b939" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entities/ExpenseCategory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exception/InvalidExpenseException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/interfaces/ExpenseAmountValidator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/interfaces/ExpenseAmountValidatorImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/interfaces/ExpenseCalculator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/interfaces/ExpenseCalculatorImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/expense/ExpenseManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/user/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/user/UserManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BudgetBuddy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/Category.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/Expense.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Expense.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/ExpenseCounter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/ExpenseInterface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/Report.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BudgetBuddy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BudgetBuddy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/Expense.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/expense/Expense.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/ExpenseCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/expense/ExpenseCategory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/ExpenseCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/ExpenseCalculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/ExpenseCalculatorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/ExpenseCalculatorImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,24 +31,24 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2XX9OwgUf882zGtNB6YIiKQLePl" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "onboarding.tips.debug.path": "/Users/emagarc/Desktop/Myproyects/budgetBuddy/src/Main.java"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;/Users/emagarc/Desktop/Myproyects/budgetBuddy/src/Main.java&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="interfaces" />
@@ -70,16 +64,5 @@
       <updated>1698764528653</updated>
     </task>
     <servers />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/BudgetBuddy.java</url>
-          <line>5</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
