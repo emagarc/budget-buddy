@@ -1,7 +1,7 @@
 # BUDGET BUDDY
 
 ## Overview
-The Simple Expense Tracker is a Java application that allows users to manage and track their expenses. It comprises four main components: `User`, `UserManager`, `Expense`, `ExpenseManager`, and `ExpenseCategory`. Here's a concise description of each component:
+The Simple Budget Buddy is a Java application that allows users to manage and track their expenses. It comprises four main components: `User`, `UserManager`, `Expense`, `ExpenseManager`, and `ExpenseCategory`. Here's a concise description of each component:
 
 ### User and UserManager
 The `User` class represents application users, storing their username, email, password, and a list of expenses.
