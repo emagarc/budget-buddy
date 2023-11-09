@@ -1,22 +1,26 @@
 package entities.expense;
 
 
+import entities.user.User;
+
 public class Expense {
     private static int globalIdCounter = 1;
     private Integer id;
     private Double amount;
-    private String category;
+    private ExpenseCategory category;
     private String date;
+    private User user;
 
     public Expense() {
         this.id = generateUniqueId();
     }
 
-    public Expense(Double amount, String category, String date) {
+    public Expense(User user,Double amount, ExpenseCategory category, String date) {
         this.id = generateUniqueId();
         this.amount = amount;
         this.category = category;
         this.date = date;
+        this.user = user;
     }
 
     public Integer getId() {
@@ -35,11 +39,11 @@ public class Expense {
         this.amount = amount;
     }
 
-    public String getCategory() {
+    public ExpenseCategory getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(ExpenseCategory category) {
         this.category = category;
     }
 

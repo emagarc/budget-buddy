@@ -5,15 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4172305a-2cf4-4810-ac01-5fa73c92b939" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/entities/expense/ExpenseManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entities/user/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entities/user/UserManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/income/Income.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/income/IncomeCategory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/income/IncomeManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BudgetBuddy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BudgetBuddy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/Expense.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/expense/Expense.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/ExpenseCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/expense/ExpenseCategory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/ExpenseCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/ExpenseCalculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/ExpenseCalculatorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/ExpenseCalculatorImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +25,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4

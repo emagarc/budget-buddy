@@ -13,8 +13,8 @@ public class ExpenseManager {
         expenses = new ArrayList<>();
     }
 
-    public void addExpense(User user, Double amount, String category, String date) {
-        Expense expense  = new Expense(amount, category, date);
+    public void addExpense(User user, Double amount, ExpenseCategory category, String date) {
+        Expense expense  = new Expense(user, amount, category, date);
         user.getExpenses().add(expense);
         expenses.add(expense);
     }
