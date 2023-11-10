@@ -1,10 +1,10 @@
 import entities.expense.Expense;
 import entities.expense.ExpenseCategory;
 import exception.InvalidExpenseException;
-import interfaces.ExpenseAmountValidator;
-import interfaces.ExpenseAmountValidatorImpl;
-import interfaces.ExpenseCalculator;
-import interfaces.ExpenseCalculatorImpl;
+import interfaces.expense.ExpenseAmountValidator;
+import interfaces.expense.ExpenseAmountValidatorImpl;
+import interfaces.expense.ExpenseCalculator;
+import interfaces.expense.ExpenseCalculatorImpl;
 
 import java.util.Scanner;
 
@@ -37,7 +37,6 @@ public class BudgetBuddy {
 
         do {
             Expense expense = new Expense();
-            ExpenseCategory category = new ExpenseCategory();
 
             System.out.println("Ingrese el monto del gasto " + (index+1) + ": ");
             amount = scanner.nextDouble();
@@ -51,8 +50,17 @@ public class BudgetBuddy {
             scanner.nextLine();
 
             System.out.println("Ingrese la categoria del gasto: ");
-            String name = scanner.nextLine().toLowerCase().trim();
-            category.setName(name);
+            String categoryInput = scanner.nextLine().toLowerCase().trim();
+
+            ExpenseCategory categoryExpense = ExpenseCategory.CATEGORIES.stream()
+                            .filter(cat -> cat.getName().equals(categoryInput))
+                                    .findFirst()
+                                            .orElse(null);
+            if (categoryExpense != null) {
+                expense.setCategory(categoryExpense);
+            } else {
+                System.out.println("Categoría no encontrada. Debe elegir una de las categorías existentes.");
+            }
 
             System.out.println("Ingrese la fecha del gasto: (dd/MM/yyyy)");
             String date = scanner.nextLine();

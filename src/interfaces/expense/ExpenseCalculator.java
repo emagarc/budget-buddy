@@ -1,4 +1,4 @@
-package interfaces;
+package interfaces.expense;
 
 import entities.expense.Expense;
 
