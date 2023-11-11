@@ -1,12 +1,13 @@
 package entities.expense;
 
+import entities.transaction.TransactionManager;
 import entities.user.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class ExpenseManager {
+public class ExpenseManager extends TransactionManager<Expense> {
     private List<Expense> expenses;
 
     public ExpenseManager() {
