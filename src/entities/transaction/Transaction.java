@@ -1,27 +1,35 @@
-package entities.expense;
+package entities.transaction;
 
-
-import entities.transaction.Transaction;
 import entities.user.User;
+import interfaces.transaction.TransactionCategory;
+import interfaces.transaction.TransactionRelatedObject;
 
-public class Expense extends Transaction {
+public class Transaction implements TransactionRelatedObject {
     private static int globalIdCounter = 1;
     private Integer id;
     private Double amount;
-    private ExpenseCategory category;
+    private TransactionCategory category;
     private String date;
     private User user;
 
-    public Expense() {
+    public Transaction() {
         this.id = generateUniqueId();
     }
 
-    public Expense(User user,Double amount, ExpenseCategory category, String date) {
+    public Transaction(Integer id, Double amount, TransactionCategory category, String date, User user) {
         this.id = generateUniqueId();
         this.amount = amount;
         this.category = category;
         this.date = date;
         this.user = user;
+    }
+
+    public static int getGlobalIdCounter() {
+        return globalIdCounter;
+    }
+
+    public static void setGlobalIdCounter(int globalIdCounter) {
+        Transaction.globalIdCounter = globalIdCounter;
     }
 
     public Integer getId() {
@@ -40,11 +48,11 @@ public class Expense extends Transaction {
         this.amount = amount;
     }
 
-    public ExpenseCategory getCategory() {
+    public TransactionCategory getCategory() {
         return category;
     }
 
-    public void setCategory(ExpenseCategory category) {
+    public void setCategory(TransactionCategory category) {
         this.category = category;
     }
 
@@ -70,7 +78,7 @@ public class Expense extends Transaction {
 
     @Override
     public String toString() {
-        return "Expense{" +
+        return "Transaction{" +
                 "id=" + id +
                 ", amount=" + amount +
                 ", category=" + category +

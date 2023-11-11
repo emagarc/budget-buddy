@@ -2,6 +2,7 @@ package entities.user;
 
 import entities.expense.Expense;
 import entities.income.Income;
+import entities.transaction.Transaction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,6 +68,13 @@ public class User {
     public void addIncome(Income income) { incomes.add(income); }
 
     public void removeIncome(Income income) { incomes.remove(income); }
+
+    public List<Transaction> getTransactions() {
+        List<Transaction> transactions = new ArrayList<>();
+        transactions.addAll(expenses);
+        transactions.addAll(incomes);
+        return transactions;
+    }
 
     @Override
     public String toString() {

@@ -1,12 +1,14 @@
 package entities.income;
 
+
+import entities.transaction.TransactionManager;
 import entities.user.User;
-import interfaces.income.IncomeInterface;
+import interfaces.transaction.TransactionCategory;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class IncomeManager implements IncomeInterface {
+public class IncomeManager extends TransactionManager<Income> {
     private List<Income> incomes;
 
     public IncomeManager() {
@@ -14,14 +16,13 @@ public class IncomeManager implements IncomeInterface {
     }
 
 
-    public void addIncome(User user, Double amount, IncomeCategory category, String date) {
-        Income income = new Income(amount, category, date, user);
-        user.getIncomes().add(income);
-        incomes.add(income);
+    @Override
+    protected Income createTransaction(Double amount, TransactionCategory category, String date, User user) {
+        return new Income(amount, (IncomeCategory) category, date, user);
     }
 
     public List<Income> getUserIncomes(User user) {
-        return user.getIncomes();
+        return filterTransactionsByUser(user);
     }
 
     public List<Income> getAllIncomes() {

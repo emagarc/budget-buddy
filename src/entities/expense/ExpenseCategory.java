@@ -1,9 +1,11 @@
 package entities.expense;
+import interfaces.transaction.TransactionCategory;
+
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-public class ExpenseCategory {
+public class ExpenseCategory implements TransactionCategory {
     public static final Set<ExpenseCategory> CATEGORIES;
 
     static {

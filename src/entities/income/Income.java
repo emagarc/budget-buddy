@@ -1,9 +1,10 @@
 package entities.income;
 
+import entities.transaction.Transaction;
 import entities.user.User;
-import interfaces.income.IncomeSource;
 
-public class Income implements IncomeSource {
+
+public class Income extends Transaction {
     private static int globalIdCounter = 1;
     private Integer id;
     private Double amount;
