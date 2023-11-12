@@ -6,11 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="4172305a-2cf4-4810-ac01-5fa73c92b939" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/expense/ExpenseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/expense/ExpenseManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entities/summary/FinancialStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/summary/FinancialStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/summary/FinancialSummary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/summary/FinancialSummary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/income/IncomeInterface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/income/IncomeSource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/user/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/user/UserManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

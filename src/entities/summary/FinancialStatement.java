@@ -3,6 +3,7 @@ package entities.summary;
 import entities.expense.ExpenseCategory;
 import entities.income.Income;
 import entities.expense.Expense;
+import entities.transaction.Transaction;
 import entities.user.User;
 
 import java.time.LocalDate;
@@ -81,6 +82,31 @@ public class FinancialStatement extends FinancialSummary {
         double monthlyExpenses = getMonthlyAverageExpense(year, month);
 
         return (monthlyExpenses / monthlyIncome) * 100.0;
+    }
+
+    public Map<String, Map<String, Double>> getDetailedCategorySummary() {
+        LocalDate currentDate = LocalDate.now();
+        int currentYear = currentDate.getYear();
+        int currentMonth = currentDate.getMonthValue();
+
+        return getDetailedCategorySummary(currentYear, currentMonth);
+    }
+
+    public Map<String, Map<String, Double>> getDetailedCategorySummary(int year, int month) {
+        Map<String, Map<String, Double>> categorySummary = new HashMap<>();
+
+        List<Transaction> transactions = getTransactionsByMonth(year, month);
+
+        for (Transaction transaction : transactions) {
+            String categoryType = (transaction instanceof Income) ? "Income" : "Expense";
+            String categoryName  = transaction.getCategory().getName();
+            double amount = transaction.getAmount();
+
+            categorySummary.computeIfAbsent(categoryType, k -> new HashMap<>())
+                    .merge(categoryName, amount, Double::sum);
+        }
+
+        return categorySummary;
     }
 
     public Map<ExpenseCategory, Double> getCategoryExpensePercentage() {

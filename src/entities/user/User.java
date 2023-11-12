@@ -3,9 +3,11 @@ package entities.user;
 import entities.expense.Expense;
 import entities.income.Income;
 import entities.transaction.Transaction;
+import interfaces.transaction.TransactionCategory;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class User {
     private String userName;
@@ -51,6 +53,10 @@ public class User {
         this.password = password;
     }
 
+    public void changePassword(String newPassword) {
+        this.password = newPassword;
+    }
+
     public List<Expense> getExpenses() {
         return expenses;
     }
@@ -74,6 +80,12 @@ public class User {
         transactions.addAll(expenses);
         transactions.addAll(incomes);
         return transactions;
+    }
+
+    public List<Transaction> getTransactionByCategory(TransactionCategory category) {
+        return getTransactions().stream()
+                .filter(transaction -> transaction.getCategory().equals(category))
+                .collect(Collectors.toList());
     }
 
     @Override
