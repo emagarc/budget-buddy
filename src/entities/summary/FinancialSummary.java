@@ -2,9 +2,13 @@ package entities.summary;
 
 import entities.expense.Expense;
 import entities.income.Income;
+import entities.transaction.Transaction;
 import entities.user.User;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class FinancialSummary {
     private double totalIncome;
@@ -23,6 +27,47 @@ public class FinancialSummary {
         totalIncome = incomes.stream().mapToDouble(Income::getAmount).sum();
         totalExpenses = expenses.stream().mapToDouble(Expense::getAmount).sum();
         balance = totalIncome - totalExpenses;
+    }
+
+    public List<Transaction> getTransactionsByMonth(int year, int month) {
+        List<Expense> expenses = user.getExpenses().stream()
+                .filter(expense -> {
+                    LocalDate expenseDate = LocalDate.parse(expense.getDate());
+                    return expenseDate.getYear() == year && expenseDate.getMonthValue() == month;
+                })
+                .collect(Collectors.toList());
+
+        List<Income> incomes = user.getIncomes().stream()
+                .filter(income -> {
+                    LocalDate incomeDate = LocalDate.parse(income.getDate());
+                    return incomeDate.getYear() == year && incomeDate.getMonthValue() == month;
+                })
+                .collect(Collectors.toList());
+
+        List<Transaction> transactions = new ArrayList<>();
+        transactions.addAll(expenses);
+        transactions.addAll(incomes);
+
+        return transactions;
+    }
+
+    public double getProjectedBalanceForNextMonth() {
+        LocalDate today = LocalDate.now();
+        int currentYear = today.getYear();
+        int currentMonth = today.getMonthValue();
+
+        List<Transaction> transactions = getTransactionsByMonth(currentYear, currentMonth);
+        double projectedIncome = transactions.stream()
+                .filter(transaction -> transaction instanceof Income)
+                .mapToDouble(Transaction::getAmount)
+                .sum();
+
+        double projectedExpenses = transactions.stream()
+                .filter(transaction -> transaction instanceof Expense)
+                .mapToDouble(Transaction::getAmount)
+                .sum();
+
+        return balance + projectedIncome - projectedExpenses;
     }
 
     public double getTotalIncome() {

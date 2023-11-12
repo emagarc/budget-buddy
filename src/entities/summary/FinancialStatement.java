@@ -19,8 +19,22 @@ public class FinancialStatement extends FinancialSummary {
     }
 
     public double getMonthlyAverageExpense() {
+        LocalDate now = LocalDate.now();
+        return getMonthlyAverageExpense(now.getYear(), now.getMonthValue());
+    }
+
+    public double getMonthlyAverageIncome() {
+        LocalDate now = LocalDate.now();
+        return getMonthlyAverageIncome(now.getYear(), now.getMonthValue());
+    }
+
+    public double getMonthlyAverageExpense(int year, int month) {
         List<Expense> expenses = getUser().getExpenses();
         Map<Integer, Double> monthlyExpenses = expenses.stream()
+                .filter(expense -> {
+                    LocalDate expenseDate = LocalDate.parse(expense.getDate());
+                    return expenseDate.getYear() == year && expenseDate.getMonthValue() == month;
+                })
                 .collect(
                         Collectors.groupingBy(
                                 e -> Integer.parseInt(e.getDate().split("-")[1]),
@@ -28,9 +42,45 @@ public class FinancialStatement extends FinancialSummary {
                         )
                 );
 
+
         double totalMonthlyExpense = monthlyExpenses.values().stream().mapToDouble(Double::doubleValue).sum();
 
         return totalMonthlyExpense / monthlyExpenses.size();
+    }
+
+
+    public double getMonthlyAverageIncome(int year, int month) {
+        List<Income> incomes = getUser().getIncomes();
+        Map<Integer, Double> monthlyIncomes = incomes.stream()
+                .filter(income -> {
+                    LocalDate incomeDate = LocalDate.parse(income.getDate());
+                    return incomeDate.getYear() == year && incomeDate.getMonthValue() == month;
+                })
+                .collect(
+                        Collectors.groupingBy(
+                                e -> Integer.parseInt(e.getDate().split("-")[1]),
+                                Collectors.summingDouble(Income::getAmount)
+                        )
+                );
+
+        double totalMonthlyIncome = monthlyIncomes.values().stream().mapToDouble(Double::doubleValue).sum();
+
+        return totalMonthlyIncome / monthlyIncomes.size();
+    }
+
+    public double calculateExpensePercentageToIncome() {
+        LocalDate currentDate = LocalDate.now();
+        int currentYear = currentDate.getYear();
+        int currentMonth = currentDate.getMonthValue();
+
+        return calculateExpensePercentageToIncome(currentYear, currentMonth);
+    }
+
+    public double calculateExpensePercentageToIncome(int year, int month) {
+        double monthlyIncome = getMonthlyAverageIncome(year, month);
+        double monthlyExpenses = getMonthlyAverageExpense(year, month);
+
+        return (monthlyExpenses / monthlyIncome) * 100.0;
     }
 
     public Map<ExpenseCategory, Double> getCategoryExpensePercentage() {
@@ -54,6 +104,22 @@ public class FinancialStatement extends FinancialSummary {
         }
 
         return categoryPercentageMap;
+    }
+
+    public ExpenseCategory getLargestExpenseCategory(int year, int month) {
+        List<Expense> expenses = getUser().getExpenses().stream()
+                .filter(expense -> {
+                   LocalDate expenseDate = LocalDate.parse(expense.getDate());
+                   return expenseDate.getYear() == year && expenseDate.getMonthValue() == month;
+                })
+                .collect(Collectors.toList());
+
+        return expenses.stream()
+                .collect(Collectors.groupingBy(Expense::getCategory, Collectors.summingDouble(Expense::getAmount)))
+                .entrySet().stream()
+                .max(Map.Entry.comparingByValue())
+                .map(Map.Entry::getKey)
+                .orElse(null);
     }
 
     public Map<Integer, Double> getYearlySummary() {
