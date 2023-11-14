@@ -12,6 +12,7 @@ public class UserManager {
     public UserManager() {
         userMap = new HashMap<>();
     }
+    private User loggedInUser;
 
     public void addUser(User user) {
         userMap.put(user.getUserName(), user);
@@ -37,7 +38,19 @@ public class UserManager {
 
     public boolean authenticateUser(String userName, String password) {
         User user = userMap.get(userName);
-        return user != null && user.getPassword().equals(password);
+        if (user != null && user.getPassword().equals(password)) {
+            loggedInUser = user;
+            return true;
+        }
+        return false;
+    }
+
+    public User getLoggedInUser() {
+        return loggedInUser;
+    }
+
+    public void logout() {
+        loggedInUser = null;
     }
 
     public Map<String, FinancialSummary> getFinancialSummaryForAllUsers() {

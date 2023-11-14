@@ -76,6 +76,7 @@ public class Transaction implements TransactionRelatedObject {
         return globalIdCounter++;
     }
 
+
     @Override
     public String toString() {
         return "Transaction{" +

@@ -3,6 +3,7 @@ package entities.expense;
 
 import entities.transaction.Transaction;
 import entities.user.User;
+import exception.InvalidExpenseException;
 
 public class Expense extends Transaction {
     private static int globalIdCounter = 1;
@@ -17,6 +18,11 @@ public class Expense extends Transaction {
     }
 
     public Expense(User user,Double amount, ExpenseCategory category, String date) {
+
+        if (amount <= 0) {
+            throw new InvalidExpenseException("Expense amount must be positive");
+        }
+
         this.id = generateUniqueId();
         this.amount = amount;
         this.category = category;

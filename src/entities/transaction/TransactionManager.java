@@ -20,7 +20,6 @@ public class TransactionManager<T extends Transaction> {
         transactions.add(transaction);
     }
 
-    // Metodo para filtrar transacciones por usuario:
     protected List<T> filterTransactionsByUser(User user) {
         return transactions.stream()
                 .filter(transaction -> transaction.getUser().equals(user))
@@ -31,15 +30,22 @@ public class TransactionManager<T extends Transaction> {
         return filterTransactionsByUser(user);
     }
 
+    public T getTransactionById(Integer transactionId) {
+        return transactions.stream()
+                .filter(transaction -> transaction.getId().equals(transactionId))
+                .findFirst()
+                .orElse(null);
+    }
+
     public List<T> getAllTransactions() {
         return transactions;
     }
 
-    // Metodo abstracto para crear una transaccion especifica
 
     protected T createTransaction(Double amount, TransactionCategory category, String date, User user) {
         return null;
     }
+
 
 
 }

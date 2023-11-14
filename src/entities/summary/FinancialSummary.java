@@ -4,6 +4,7 @@ import entities.expense.Expense;
 import entities.income.Income;
 import entities.transaction.Transaction;
 import entities.user.User;
+import exception.NoDataException;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -24,6 +25,11 @@ public class FinancialSummary {
     private void calculateFinancialSummary() {
         List<Expense> expenses = user.getExpenses();
         List<Income> incomes = user.getIncomes();
+
+        if (expenses.isEmpty() && incomes.isEmpty()) {
+            throw new NoDataException("No data available to calculate financial summary.");
+        }
+
         totalIncome = incomes.stream().mapToDouble(Income::getAmount).sum();
         totalExpenses = expenses.stream().mapToDouble(Expense::getAmount).sum();
         balance = totalIncome - totalExpenses;
@@ -48,6 +54,10 @@ public class FinancialSummary {
         transactions.addAll(expenses);
         transactions.addAll(incomes);
 
+        if (transactions.isEmpty()) {
+            throw new NoDataException("No transactions available for the specified year and month.");
+        }
+
         return transactions;
     }
 
@@ -57,6 +67,11 @@ public class FinancialSummary {
         int currentMonth = today.getMonthValue();
 
         List<Transaction> transactions = getTransactionsByMonth(currentYear, currentMonth);
+
+        if (transactions.isEmpty()) {
+            throw new NoDataException("No transactions available to project balance for the next month.");
+        }
+
         double projectedIncome = transactions.stream()
                 .filter(transaction -> transaction instanceof Income)
                 .mapToDouble(Transaction::getAmount)
