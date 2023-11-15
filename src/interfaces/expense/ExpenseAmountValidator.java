@@ -1,6 +1,6 @@
 package interfaces.expense;
 
-import exception.InvalidExpenseException;
+import exceptions.InvalidExpenseException;
 
 @FunctionalInterface
 public interface ExpenseAmountValidator {

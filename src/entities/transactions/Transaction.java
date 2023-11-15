@@ -1,27 +1,35 @@
-package entities.income;
+package entities.transactions;
 
-import entities.transaction.Transaction;
 import entities.user.User;
+import interfaces.transaction.TransactionCategory;
+import interfaces.transaction.TransactionRelatedObject;
 
-
-public class Income extends Transaction {
+public class Transaction implements TransactionRelatedObject {
     private static int globalIdCounter = 1;
     private Integer id;
     private Double amount;
-    private IncomeCategory category;
+    private TransactionCategory category;
     private String date;
     private User user;
 
-    public Income () {
+    public Transaction() {
         this.id = generateUniqueId();
     }
 
-    public Income(Double amount, IncomeCategory category, String date, User user) {
+    public Transaction(Integer id, Double amount, TransactionCategory category, String date, User user) {
         this.id = generateUniqueId();
         this.amount = amount;
         this.category = category;
         this.date = date;
         this.user = user;
+    }
+
+    public static int getGlobalIdCounter() {
+        return globalIdCounter;
+    }
+
+    public static void setGlobalIdCounter(int globalIdCounter) {
+        Transaction.globalIdCounter = globalIdCounter;
     }
 
     public Integer getId() {
@@ -40,11 +48,11 @@ public class Income extends Transaction {
         this.amount = amount;
     }
 
-    public IncomeCategory getCategory() {
+    public TransactionCategory getCategory() {
         return category;
     }
 
-    public void setCategory(IncomeCategory category) {
+    public void setCategory(TransactionCategory category) {
         this.category = category;
     }
 
@@ -68,9 +76,10 @@ public class Income extends Transaction {
         return globalIdCounter++;
     }
 
+
     @Override
     public String toString() {
-        return "Expense{" +
+        return "Transaction{" +
                 "id=" + id +
                 ", amount=" + amount +
                 ", category=" + category +

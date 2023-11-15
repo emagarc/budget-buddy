@@ -1,13 +1,13 @@
 package entities.summary;
 
-import entities.expense.ExpenseCategory;
-import entities.income.Income;
-import entities.expense.Expense;
-import entities.transaction.Transaction;
+import entities.expenses.ExpenseCategory;
+import entities.incomes.Income;
+import entities.expenses.Expense;
+import entities.transactions.Transaction;
 import entities.user.User;
-import exception.InsufficientDataException;
-import exception.CategoryNotFoundException;
-import exception.NoDataException;
+import exceptions.InsufficientDataException;
+import exceptions.CategoryNotFoundException;
+import exceptions.NoDataException;
 
 import java.time.LocalDate;
 import java.time.Year;

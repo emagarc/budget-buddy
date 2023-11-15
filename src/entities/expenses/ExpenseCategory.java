@@ -1,4 +1,4 @@
-package entities.expense;
+package entities.expenses;
 import interfaces.transaction.TransactionCategory;
 
 import java.util.Collections;

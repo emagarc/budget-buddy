@@ -1,4 +1,4 @@
-package entities.income;
+package entities.incomes;
 import interfaces.transaction.TransactionCategory;
 
 import java.util.Collections;

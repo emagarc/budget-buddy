@@ -1,4 +1,4 @@
-package exception;
+package exceptions;
 
 public class InsufficientDataException extends RuntimeException {
     private static final String DEFAULT_MESSAGE = "Insufficient data.";

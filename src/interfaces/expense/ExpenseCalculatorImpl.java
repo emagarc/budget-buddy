@@ -1,7 +1,6 @@
 package interfaces.expense;
 
-import entities.expense.Expense;
-import interfaces.expense.ExpenseCalculator;
+import entities.expenses.Expense;
 
 public class ExpenseCalculatorImpl implements ExpenseCalculator {
     @Override

@@ -1,8 +1,8 @@
 package entities.user;
 
-import entities.expense.Expense;
-import entities.income.Income;
-import entities.transaction.Transaction;
+import entities.expenses.Expense;
+import entities.incomes.Income;
+import entities.transactions.Transaction;
 import interfaces.transaction.TransactionCategory;
 
 import java.util.ArrayList;

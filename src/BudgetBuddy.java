@@ -1,6 +1,6 @@
-import entities.expense.Expense;
-import entities.expense.ExpenseCategory;
-import exception.InvalidExpenseException;
+import entities.expenses.Expense;
+import entities.expenses.ExpenseCategory;
+import exceptions.InvalidExpenseException;
 import interfaces.expense.ExpenseAmountValidator;
 import interfaces.expense.ExpenseAmountValidatorImpl;
 import interfaces.expense.ExpenseCalculator;

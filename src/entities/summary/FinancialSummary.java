@@ -1,10 +1,10 @@
 package entities.summary;
 
-import entities.expense.Expense;
-import entities.income.Income;
-import entities.transaction.Transaction;
+import entities.expenses.Expense;
+import entities.incomes.Income;
+import entities.transactions.Transaction;
 import entities.user.User;
-import exception.NoDataException;
+import exceptions.NoDataException;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

@@ -1,9 +1,9 @@
-package entities.expense;
+package entities.expenses;
 
-import entities.transaction.TransactionManager;
+import entities.transactions.TransactionManager;
 import entities.user.User;
-import exception.ExpenseCreationException;
-import exception.ExpenseNotFoundException;
+import exceptions.ExpenseCreationException;
+import exceptions.ExpenseNotFoundException;
 import interfaces.transaction.TransactionCategory;
 
 import java.util.ArrayList;
@@ -11,11 +11,6 @@ import java.util.List;
 
 
 public class ExpenseManager extends TransactionManager<Expense> {
-    private List<Expense> expenses;
-
-    public ExpenseManager() {
-        expenses = new ArrayList<>();
-    }
 
 
     @Override
@@ -37,12 +32,22 @@ public class ExpenseManager extends TransactionManager<Expense> {
         }
     }
 
+    @Override
+    public Expense removeTransaction(Integer expenseId) {
+        try {
+            return super.removeTransaction(expenseId);
+        } catch (ExpenseNotFoundException ex) {
+            System.out.println("Expense not found: " + ex.getMessage());
+            throw ex;
+        }
+    }
+
     public List<Expense> getUserExpenses (User user) {
         return user.getExpenses();
     }
 
     public List<Expense> getAllExpenses () {
-        return expenses;
+        return getAllTransactions();
     }
 
 

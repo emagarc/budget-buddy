@@ -1,4 +1,4 @@
-package exception;
+package exceptions;
 
 public class CategoryNotFoundException extends RuntimeException {
     private static final String DEFAULT_MESSAGE = "No data available for the specified category.";

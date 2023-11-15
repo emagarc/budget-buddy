@@ -1,6 +1,6 @@
 package interfaces.expense;
 
-import entities.expense.Expense;
+import entities.expenses.Expense;
 
 public interface ExpenseCalculator {
     double calculateExpense(Expense expense);
