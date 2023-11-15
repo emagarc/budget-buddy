@@ -7,6 +7,7 @@ import exceptions.InvalidExpenseException;
 
 public class Expense extends Transaction {
     private static int globalIdCounter = 1;
+    private ExpenseCategory category;
 
     public Expense() {
         this.setId(generateUniqueId());
@@ -25,6 +26,9 @@ public class Expense extends Transaction {
         this.setUser(user);
     }
 
+    public ExpenseCategory getCategory() {
+        return category;
+    }
 
     private static synchronized int generateUniqueId() {
         return globalIdCounter++;

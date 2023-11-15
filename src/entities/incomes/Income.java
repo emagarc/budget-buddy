@@ -7,6 +7,8 @@ import entities.user.User;
 public class Income extends Transaction {
     private static int globalIdCounter = 1;
 
+    private IncomeCategory category;
+
     public Income () {
         this.setId(generateUniqueId());
     }
@@ -17,6 +19,10 @@ public class Income extends Transaction {
         this.setCategory(category);
         this.setDate(date);
         this.setUser(user);
+    }
+
+    public IncomeCategory getCategory() {
+        return category;
     }
 
     private static synchronized int generateUniqueId() {

@@ -41,14 +41,14 @@ public class FinancialSummary {
                     LocalDate expenseDate = LocalDate.parse(expense.getDate());
                     return expenseDate.getYear() == year && expenseDate.getMonthValue() == month;
                 })
-                .collect(Collectors.toList());
+                .toList();
 
         List<Income> incomes = user.getIncomes().stream()
                 .filter(income -> {
                     LocalDate incomeDate = LocalDate.parse(income.getDate());
                     return incomeDate.getYear() == year && incomeDate.getMonthValue() == month;
                 })
-                .collect(Collectors.toList());
+                .toList();
 
         List<Transaction> transactions = new ArrayList<>();
         transactions.addAll(expenses);
