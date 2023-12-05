@@ -5,28 +5,54 @@ import main.entities.user.User;
 
 
 public class Income extends Transaction {
-    private static int globalIdCounter = 1;
-
-    private IncomeCategory category;
+    private int userId;
+    private double amount;
+    private int categoryId;
+    private String date;
 
     public Income () {
-        this.setId(generateUniqueId());
     }
 
-    public Income(Double amount, IncomeCategory category, String date, User user) {
-        this.setId(generateUniqueId());
-        this.setAmount(amount);
-        this.setCategory(category);
-        this.setDate(date);
-        this.setUser(user);
+    public Income(int userId, double amount, int categoryId, String date) {
+        this.userId = userId;
+        this.amount = amount;
+        this.categoryId = categoryId;
+        this.date = date;
     }
 
-    public IncomeCategory getCategory() {
-        return category;
+    public int getUserId() {
+        return userId;
     }
 
-    private static synchronized int generateUniqueId() {
-        return globalIdCounter++;
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    @Override
+    public Double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public int getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    @Override
+    public String getDate() {
+        return date;
+    }
+
+    @Override
+    public void setDate(String date) {
+        this.date = date;
     }
 
     @Override

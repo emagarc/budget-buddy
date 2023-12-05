@@ -5,48 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4172305a-2cf4-4810-ac01-5fa73c92b939" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/CREATE_TABLE_EXPENSE.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CREATE_TABLE_EXPENSE_CATEGORY.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/config/JdbcConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/dao/ExpenseCategoryDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/dao/ExpenseDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/dao/dto/ExpenseCategoryDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/dao/dto/ExpenseDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/dao/impl/ExpenseCategoryDaoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/dao/impl/ExpenseDaoImplH2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/entities/expenses/Expense.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/exceptions/DAOException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/dao/IncomeCategoryDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/dao/IncomeDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/dao/UserDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/dao/dto/IncomeDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/dao/dto/UserDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/dao/impl/IncomeCategoryDaoImplH2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/dao/impl/IncomeDaoImplH2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/dao/impl/UserDaoImplH2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/budgetBuddy.iml" beforeDir="false" afterPath="$PROJECT_DIR$/budgetBuddy.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BudgetBuddy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BudgetBuddy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/expenses/Expense.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/expenses/ExpenseCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/entities/expenses/ExpenseCategory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/expenses/ExpenseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/entities/expenses/ExpenseManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/incomes/Income.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/entities/incomes/Income.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/incomes/IncomeCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/entities/incomes/IncomeCategory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/incomes/IncomeManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/entities/incomes/IncomeManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/summary/FinancialStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/entities/summary/FinancialStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/summary/FinancialSummary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/entities/summary/FinancialSummary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/transactions/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/entities/transactions/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/transactions/TransactionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/entities/transactions/TransactionManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/entities/user/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/user/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/entities/user/UserManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exceptions/CategoryNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/exceptions/CategoryNotFoundException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exceptions/ExpenseCreationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/exceptions/ExpenseCreationException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exceptions/ExpenseNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/exceptions/ExpenseNotFoundException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exceptions/IncomeNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/exceptions/IncomeNotFoundException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exceptions/InsufficientDataException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/exceptions/InsufficientDataException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exceptions/InvalidExpenseException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/exceptions/InvalidExpenseException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exceptions/NoDataException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/exceptions/NoDataException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/expense/ExpenseAmountValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/interfaces/expense/ExpenseAmountValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/expense/ExpenseAmountValidatorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/interfaces/expense/ExpenseAmountValidatorImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/expense/ExpenseCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/interfaces/expense/ExpenseCalculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/expense/ExpenseCalculatorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/interfaces/expense/ExpenseCalculatorImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/expense/ExpenseCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/interfaces/expense/ExpenseCategory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/financial/AmountValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/interfaces/financial/AmountValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/financial/FinancialSummaryCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/interfaces/financial/FinancialSummaryCalculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/transaction/TransactionCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/interfaces/transaction/TransactionCategory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/transaction/TransactionRelatedObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/interfaces/transaction/TransactionRelatedObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/dao/ExpenseCategoryDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/dao/ExpenseCategoryDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/dao/dto/ExpenseCategoryDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/dao/impl/ExpenseCategoryDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/dao/impl/ExpenseCategoryDaoImplH2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/entities/expenses/Expense.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/entities/expenses/Expense.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/entities/incomes/Income.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/entities/incomes/Income.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,22 +77,5 @@
       <updated>1698764528653</updated>
     </task>
     <servers />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-field">
-          <url>file://$PROJECT_DIR$/src/main/dao/impl/ExpenseDaoImplH2.java</url>
-          <line>16</line>
-          <properties field="UPDATE_EXPENSE" class="main.dao.impl.ExpenseDaoImplH2" />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/dao/impl/ExpenseDaoImplH2.java</url>
-          <line>11</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

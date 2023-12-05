@@ -1,21 +1,28 @@
-package main.entities.expenses;
+package main.dao.dto;
 
-import main.entities.transactions.Transaction;
-
-public class Expense extends Transaction {
+public class IncomeDto {
+    private int id;
     private int userId;
     private double amount;
     private int categoryId;
     private String date;
 
-    public Expense() {
+    public IncomeDto() {
     }
 
-    public Expense(int userId, double amount, int categoryId, String date) {
+    public IncomeDto(int userId, double amount, int categoryId, String date) {
         this.userId = userId;
         this.amount = amount;
         this.categoryId = categoryId;
         this.date = date;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getUserId() {
@@ -26,7 +33,7 @@ public class Expense extends Transaction {
         this.userId = userId;
     }
 
-    public Double getAmount() {
+    public double getAmount() {
         return amount;
     }
 
