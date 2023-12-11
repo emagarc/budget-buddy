@@ -18,6 +18,7 @@ public class Expense extends Transaction {
         this.date = date;
     }
 
+
     public int getUserId() {
         return userId;
     }

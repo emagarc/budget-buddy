@@ -5,21 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4172305a-2cf4-4810-ac01-5fa73c92b939" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/dao/IncomeCategoryDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/dao/IncomeDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/dao/UserDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/dao/dto/IncomeDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/dao/dto/UserDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/dao/impl/IncomeCategoryDaoImplH2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/dao/impl/IncomeDaoImplH2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/dao/impl/UserDaoImplH2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/dao/ExpenseManagerDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/dao/impl/ExpenseManagerDaoImplH2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BudgetBuddy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BudgetBuddy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dao/ExpenseCategoryDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/dao/ExpenseCategoryDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dao/dto/ExpenseCategoryDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dao/impl/ExpenseCategoryDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/dao/impl/ExpenseCategoryDaoImplH2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/dao/ExpenseDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/dao/ExpenseDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/dao/impl/ExpenseDaoImplH2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/dao/impl/ExpenseDaoImplH2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/entities/expenses/Expense.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/entities/expenses/Expense.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/entities/incomes/Income.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/entities/incomes/Income.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/entities/expenses/ExpenseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/entities/expenses/ExpenseManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

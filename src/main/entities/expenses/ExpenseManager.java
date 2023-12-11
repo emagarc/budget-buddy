@@ -1,5 +1,6 @@
 package main.entities.expenses;
 
+import main.dao.ExpenseDao;
 import main.entities.transactions.TransactionManager;
 import main.entities.user.User;
 import main.exceptions.ExpenseCreationException;
@@ -8,45 +9,35 @@ import main.interfaces.transaction.TransactionCategory;
 
 import java.util.List;
 
+import main.dao.ExpenseManagerDao;
+
 
 public class ExpenseManager extends TransactionManager<Expense> {
 
+    private final ExpenseDao expenseDao;
+
+    public ExpenseManager(ExpenseDao expenseDao) {
+        this.expenseDao = expenseDao;
+    }
 
     @Override
-    protected Expense createTransaction(Double amount, TransactionCategory category, String date, User user) {
+    protected Expense createTransaction(double amount, int categoryId, String date, int userId) {
         try {
-            return new Expense(user, amount, (ExpenseCategory) category, date);
+            Expense expense = new Expense(userId, amount, categoryId, date);
+            expenseDao.insert(expense);
+            return expense;
         } catch (Exception e) {
             throw new ExpenseCreationException("Error creating expense: " + e.getMessage());
         }
     }
 
-    @Override
-    public Expense getTransactionById(Integer expenseId) {
-        try {
-            return super.getTransactionById(expenseId);
-        } catch (ExpenseNotFoundException ex) {
-            System.out.println("Expense not found: " + ex.getMessage());
-            throw ex;
-        }
-    }
-
-    @Override
-    public Expense removeTransaction(Integer expenseId) {
-        try {
-            return super.removeTransaction(expenseId);
-        } catch (ExpenseNotFoundException ex) {
-            System.out.println("Expense not found: " + ex.getMessage());
-            throw ex;
-        }
-    }
 
     public List<Expense> getUserExpenses (User user) {
-        return user.getExpenses();
+        return expenseManagerDao.getUserExpenses(user);
     }
 
     public List<Expense> getAllExpenses () {
-        return getAllTransactions();
+        return expenseManagerDao.getAllExpenses();
     }
 
 

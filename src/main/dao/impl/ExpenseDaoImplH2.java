@@ -59,15 +59,15 @@ public class ExpenseDaoImplH2 implements ExpenseDao {
     }
 
     @Override
-    public void insert(ExpenseDto expenseDto) throws DAOException {
+    public void insert(Expense expenseToInsert) throws DAOException {
         try (PreparedStatement statement = connection.prepareStatement(INSERT_INTO_EXPENSE, Statement.RETURN_GENERATED_KEYS)) {
             // Utiliza mapDtoToExpense para obtener el objeto Expense
-            Expense expense = mapDtoToExpense(expenseDto);
+            ExpenseDto expenseDto = mapExpenseToDto(expenseToInsert);
 
-            statement.setDouble(1, expense.getAmount());
-            statement.setInt(2, expense.getCategoryId());
-            statement.setString(3, expense.getDate());
-            statement.setInt(4, expense.getUserId()); // Set the user_id
+            statement.setDouble(1, expenseToInsert.getAmount());
+            statement.setInt(2, expenseToInsert.getCategoryId());
+            statement.setString(3, expenseToInsert.getDate());
+            statement.setInt(4, expenseToInsert.getUserId()); // Set the user_id
 
             int affectedRows = statement.executeUpdate();
             if (affectedRows == 0) {
@@ -112,14 +112,15 @@ public class ExpenseDaoImplH2 implements ExpenseDao {
         }
     }
 
-    private Expense mapDtoToExpense(ExpenseDto expenseDto) {
-        Expense expense = new Expense();
-        expense.setAmount(expenseDto.getAmount());
-        expense.setCategoryId(expenseDto.getCategoryId());
-        expense.setDate(expenseDto.getDate());
-        expense.setUserId(expenseDto.getUserId()); // Set the userId
-        return expense;
+    private ExpenseDto mapExpenseToDto(Expense expense) {
+        ExpenseDto expenseDto = new ExpenseDto();
+        expenseDto.setAmount(expense.getAmount());
+        expenseDto.setCategoryId(expense.getCategoryId());
+        expenseDto.setDate(expense.getDate());
+        expenseDto.setUserId(expense.getUserId()); // Set the userId
+        return expenseDto;
     }
+
 
     private ExpenseDto mapResultSetToExpenseDto(ResultSet resultSet) throws SQLException {
         ExpenseDto expenseDto = new ExpenseDto();
