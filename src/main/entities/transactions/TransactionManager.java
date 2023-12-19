@@ -7,16 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class TransactionManager<T extends Transaction> {
+public abstract class TransactionManager<T extends Transaction> {
     private final List<T> transactions;
 
     public TransactionManager() {
         transactions = new ArrayList<>();
     }
 
-    protected T createTransaction(Double amount, TransactionCategory category, String date, User user) {
-        throw new UnsupportedOperationException("Subclasses must implement createTransaction");
-    }
+   protected abstract T createTransaction(double amount, TransactionCategory category, String date, User user);
 
     public T getTransactionById(Integer transactionId) {
         return transactions.stream()

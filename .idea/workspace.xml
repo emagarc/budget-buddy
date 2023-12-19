@@ -5,13 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4172305a-2cf4-4810-ac01-5fa73c92b939" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/dao/ExpenseManagerDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/dao/impl/ExpenseManagerDaoImplH2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/dao/ExpenseDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/dao/ExpenseDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dao/impl/ExpenseDaoImplH2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/dao/impl/ExpenseDaoImplH2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/entities/expenses/Expense.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/entities/expenses/Expense.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/dao/ExpenseManagerDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/dao/ExpenseManagerDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/dao/impl/ExpenseManagerDaoImplH2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/dao/impl/ExpenseManagerDaoImplH2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/entities/expenses/ExpenseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/entities/expenses/ExpenseManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/entities/summary/FinancialStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/entities/summary/FinancialStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/entities/summary/FinancialSummary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/entities/summary/FinancialSummary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/entities/transactions/TransactionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/entities/transactions/TransactionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/interfaces/transaction/TransactionCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/interfaces/transaction/TransactionCategory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

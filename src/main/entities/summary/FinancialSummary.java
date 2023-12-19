@@ -102,5 +102,6 @@ public class FinancialSummary {
 
     public void setUser(User user) {
         this.user = user;
+        calculateFinancialSummary();
     }
 }

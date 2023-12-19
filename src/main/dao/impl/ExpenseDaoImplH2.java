@@ -3,6 +3,7 @@ package main.dao.impl;
 import main.dao.ExpenseDao;
 import main.dao.dto.ExpenseDto;
 import main.entities.expenses.Expense;
+import main.entities.user.User;
 import main.exceptions.DAOException;
 
 import java.sql.*;
@@ -23,7 +24,7 @@ public class ExpenseDaoImplH2 implements ExpenseDao {
     }
 
     @Override
-    public ExpenseDto getById(int id, int requestingUserId) throws DAOException {
+    public ExpenseDto getById(int id, User requestingUser) throws DAOException {
         try (PreparedStatement statement = connection.prepareStatement(GET_EXPENSE_BY_ID)) {
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
@@ -31,7 +32,7 @@ public class ExpenseDaoImplH2 implements ExpenseDao {
                 ExpenseDto expenseDto = mapResultSetToExpenseDto(resultSet);
 
                 // Verifica si el userId asociado al gasto coincide con el userId de la solicitud
-                if (expenseDto.getUserId() == requestingUserId) {
+                if (expenseDto.getUserId() == requestingUser.getId()) {
                     return expenseDto;
                 } else {
                     // Puedes lanzar una excepción indicando que el gasto no pertenece al usuario solicitante

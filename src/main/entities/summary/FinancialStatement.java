@@ -6,16 +6,12 @@ import main.entities.expenses.Expense;
 import main.entities.transactions.Transaction;
 import main.entities.user.User;
 import main.exceptions.InsufficientDataException;
-import main.exceptions.CategoryNotFoundException;
 import main.exceptions.NoDataException;
 
 import java.time.LocalDate;
-import java.time.Year;
-import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 public class FinancialStatement extends FinancialSummary {
@@ -24,72 +20,49 @@ public class FinancialStatement extends FinancialSummary {
         super(user);
     }
 
-    public double getMonthlyAverageExpense() {
-        LocalDate now = LocalDate.now();
-        return getMonthlyAverageExpense(now.getYear(), now.getMonthValue());
+    private void validateData(List<List<?>> dataList) {
+        for (List<?> data : dataList) {
+            if (data.isEmpty()) {
+                throw new NoDataException("No data available for the specified period.");
+            }
+        }
     }
 
-    public double getMonthlyAverageIncome() {
-        LocalDate now = LocalDate.now();
-        return getMonthlyAverageIncome(now.getYear(), now.getMonthValue());
+    private double calculateAverage(Map<Integer, Double> monthlyData) {
+        double totalMonthlyData = monthlyData.values().stream().mapToDouble(Double::doubleValue).sum();
+        return totalMonthlyData / monthlyData.size();
     }
+
 
     public double getMonthlyAverageExpense(int year, int month) {
         List<Expense> expenses = getUser().getExpenses();
-
-        Set<String> uniqueMonths = expenses.stream()
-                .map(expense -> LocalDate.parse(expense.getDate()).format(DateTimeFormatter.ofPattern("yyyy-MM")))
-                .collect(Collectors.toSet());
-
-        if (uniqueMonths.size() < 2) {
-            throw new InsufficientDataException();
-        }
+        validateData(List.of(expenses));
 
         Map<Integer, Double> monthlyExpenses = expenses.stream()
-                .filter(expense -> {
-                    LocalDate expenseDate = LocalDate.parse(expense.getDate());
-                    return expenseDate.getYear() == year && expenseDate.getMonthValue() == month;
-                })
-                .collect(
-                        Collectors.groupingBy(
-                                e -> Integer.parseInt(e.getDate().split("-")[1]),
-                                Collectors.summingDouble(Expense::getAmount)
-                        )
-                );
+                .filter(expense -> LocalDate.parse(expense.getDate()).getYear() == year &&
+                        LocalDate.parse(expense.getDate()).getMonthValue() == month)
+                .collect(Collectors.groupingBy(
+                        e -> LocalDate.parse(e.getDate()).getDayOfMonth(),
+                        Collectors.summingDouble(Expense::getAmount)
+                ));
 
-
-        double totalMonthlyExpense = monthlyExpenses.values().stream().mapToDouble(Double::doubleValue).sum();
-
-        return totalMonthlyExpense / monthlyExpenses.size();
+        return calculateAverage(monthlyExpenses);
     }
 
 
     public double getMonthlyAverageIncome(int year, int month) {
         List<Income> incomes = getUser().getIncomes();
-
-        Set<String> uniqueMonths = incomes.stream()
-                .map(income -> LocalDate.parse(income.getDate()).format(DateTimeFormatter.ofPattern("yyyy-MM")))
-                .collect(Collectors.toSet());
-
-        if (uniqueMonths.size() < 2) {
-            throw new InsufficientDataException("");
-        }
+        validateData(List.of(incomes));
 
         Map<Integer, Double> monthlyIncomes = incomes.stream()
-                .filter(income -> {
-                    LocalDate incomeDate = LocalDate.parse(income.getDate());
-                    return incomeDate.getYear() == year && incomeDate.getMonthValue() == month;
-                })
-                .collect(
-                        Collectors.groupingBy(
-                                e -> Integer.parseInt(e.getDate().split("-")[1]),
-                                Collectors.summingDouble(Income::getAmount)
-                        )
-                );
+                .filter(income -> LocalDate.parse(income.getDate()).getYear() == year &&
+                        LocalDate.parse(income.getDate()).getMonthValue() == month)
+                .collect(Collectors.groupingBy(
+                        e -> LocalDate.parse(e.getDate()).getDayOfMonth(),
+                        Collectors.summingDouble(Income::getAmount)
+                ));
 
-        double totalMonthlyIncome = monthlyIncomes.values().stream().mapToDouble(Double::doubleValue).sum();
-
-        return totalMonthlyIncome / monthlyIncomes.size();
+        return calculateAverage(monthlyIncomes);
     }
 
     public double calculateExpensePercentageToIncome() {
@@ -141,7 +114,7 @@ public class FinancialStatement extends FinancialSummary {
 
         for (Transaction transaction : transactions) {
             String categoryType = (transaction instanceof Income) ? "Income" : "Expense";
-            String categoryName  = transaction.getCategory().getName();
+            String categoryName = transaction.getCategory().getName();
             double amount = transaction.getAmount();
 
             categorySummary.computeIfAbsent(categoryType, k -> new HashMap<>())
@@ -158,11 +131,11 @@ public class FinancialStatement extends FinancialSummary {
     public Map<ExpenseCategory, Double> getCategoryExpensePercentage() {
         try {
             List<Expense> expenses = getUser().getExpenses();
-            Map<ExpenseCategory, Double> categoryPercentageMap = new HashMap<>();
-
+            validateData(List.of(expenses));
 
             double totalExpense = expenses.stream().mapToDouble(Expense::getAmount).sum();
 
+            Map<ExpenseCategory, Double> categoryPercentageMap = new HashMap<>();
             for (ExpenseCategory category : ExpenseCategory.CATEGORIES) {
                 double categoryExpense = expenses.stream()
                         .filter(expense -> expense.getCategory().equals(category))
@@ -184,68 +157,5 @@ public class FinancialStatement extends FinancialSummary {
         }
     }
 
-    public ExpenseCategory getLargestExpenseCategory(int year, int month) throws CategoryNotFoundException {
-        List<Expense> expenses = getUser().getExpenses().stream()
-                .filter(expense -> {
-                   LocalDate expenseDate = LocalDate.parse(expense.getDate());
-                   return expenseDate.getYear() == year && expenseDate.getMonthValue() == month;
-                })
-                .collect(Collectors.toList());
-
-        if (expenses.isEmpty()) {
-            throw new CategoryNotFoundException("No expenses available for the specified month.");
-        }
-
-        return expenses.stream()
-                .collect(Collectors.groupingBy(Expense::getCategory, Collectors.summingDouble(Expense::getAmount)))
-                .entrySet().stream()
-                .max(Map.Entry.comparingByValue())
-                .map(Map.Entry::getKey)
-                .orElse(null);
-    }
-
-    public Map<Integer, Double> getYearlySummary() throws NoDataException {
-        List<Expense> expenses = getUser().getExpenses();
-        List<Income> incomes = getUser().getIncomes();
-
-        if (expenses.isEmpty() && incomes.isEmpty()) {
-            throw new NoDataException("No expense or income data available to generate yearly summary.");
-        }
-
-        Map<Integer, Double> yearlyExpenses = expenses.stream()
-                .collect(Collectors.groupingBy(
-                        e -> LocalDate.parse(e.getDate()).getYear(),
-                        Collectors.summingDouble(Expense::getAmount)
-                ));
-
-        Map<Integer, Double> yearlyIncomes = incomes.stream()
-                .collect(Collectors.groupingBy(
-                        i -> LocalDate.parse(i.getDate()).getYear(),
-                        Collectors.summingDouble(Income::getAmount)
-                ));
-
-        Map<Integer, Double> yearlySummary = new HashMap<>();
-        for (int year = Year.now().getValue(); year >= Year.now().getValue() - 4; year--) {
-            double totalIncome = yearlyIncomes.getOrDefault(year, 0.0);
-            double totalExpense = yearlyExpenses.getOrDefault(year, 0.0);
-            yearlySummary.put(year, totalIncome - totalExpense);
-        }
-
-        return yearlySummary;
-    }
-
-    public double getAccumulateSavings() throws NoDataException {
-        List<Expense> expenses = getUser().getExpenses();
-        List<Income> incomes = getUser().getIncomes();
-
-        if (expenses.isEmpty() && incomes.isEmpty()) {
-            throw new NoDataException("No expense or income data available to calculate accumulated savings.");
-        }
-
-        double totalIncome = incomes.stream().mapToDouble(Income::getAmount).sum();
-        double totalExpense = expenses.stream().mapToDouble(Expense::getAmount).sum();
-
-        return totalIncome - totalExpense;
-    }
 }
 

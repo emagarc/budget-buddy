@@ -1,13 +1,18 @@
 package main.dao;
 import main.entities.expenses.Expense;
+import main.entities.summary.FinancialStatement;
+import main.entities.summary.FinancialSummary;
+import main.entities.user.User;
 
 import java.util.List;
 
 
 public interface ExpenseManagerDao {
-    void createExpense(Expense expense);
-    Expense getExpenseById(int expenseId);
+    Expense getExpenseByIdForManager(int expenseId);
     Expense removeExpense(int expenseId);
-    List<Expense> getUserExpenses(String userName);
+    List<Expense> getUserExpenses(User user);
     List<Expense> getAllExpenses();
+
+    FinancialSummary getFinancialSummary(User user);
+    FinancialStatement getFinancialStatement(User user);
 }
