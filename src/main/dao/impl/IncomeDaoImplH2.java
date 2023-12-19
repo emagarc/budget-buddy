@@ -2,7 +2,9 @@ package main.dao.impl;
 
 import main.dao.IncomeDao;
 import main.dao.dto.IncomeDto;
+import main.dao.dto.UserDto;
 import main.entities.incomes.Income;
+import main.entities.user.User;
 import main.exceptions.DAOException;
 
 import java.sql.*;
@@ -23,7 +25,7 @@ public class IncomeDaoImplH2 implements IncomeDao {
     }
 
     @Override
-    public IncomeDto getById(int id, int requestingUserId) throws DAOException {
+    public IncomeDto getById(int id, UserDto requestingUser) throws DAOException {
         try (PreparedStatement statement = connection.prepareStatement(GET_INCOME_BY_ID)) {
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
@@ -31,7 +33,7 @@ public class IncomeDaoImplH2 implements IncomeDao {
                 IncomeDto incomeDto = mapResultSetToIncomeDto(resultSet);
 
                 // Verifica si el userId asociado al ingreso coincide con el userId de la solicitud
-                if (incomeDto.getUserId() == requestingUserId) {
+                if (incomeDto.getUserId() == requestingUser.getUserId()) {
                     return incomeDto;
                 } else {
                     // Puedes lanzar una excepción indicando que el ingreso no pertenece al usuario solicitante
@@ -41,6 +43,35 @@ public class IncomeDaoImplH2 implements IncomeDao {
             return null; // Si no se encuentra el ingreso, puedes devolver null
         } catch (SQLException e) {
             throw new DAOException("Error al obtener el ingreso por ID", e);
+        }
+    }
+
+    @Override
+    public IncomeDto getByIdForAdmin(int id) throws DAOException {
+        try (PreparedStatement statement = connection.prepareStatement(GET_INCOME_BY_ID)) {
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                return mapResultSetToIncomeDto(resultSet);
+            }
+            return null; // Si no se encuentra el ingreso, puedes devolver null
+        } catch (SQLException e) {
+            throw new DAOException("Error al obtener el ingreso por ID para administrador", e);
+        }
+    }
+
+    @Override
+    public List<IncomeDto> getUserIncomes(UserDto userDto) throws DAOException {
+        try (PreparedStatement statement = connection.prepareStatement(GET_ALL_USER_INCOMES)) {
+            statement.setInt(1, userDto.getUserId());
+            ResultSet resultSet = statement.executeQuery();
+            List<IncomeDto> incomes = new ArrayList<>();
+            while (resultSet.next()) {
+                incomes.add(mapResultSetToIncomeDto(resultSet));
+            }
+            return incomes;
+        } catch (SQLException e) {
+            throw new DAOException("Error al obtener los ingresos del usuario", e);
         }
     }
 
@@ -100,9 +131,9 @@ public class IncomeDaoImplH2 implements IncomeDao {
     }
 
     @Override
-    public void delete(int id) throws DAOException {
+    public void delete(IncomeDto incomeDto) throws DAOException {
         try (PreparedStatement statement = connection.prepareStatement(DELETE_INCOME)) {
-            statement.setInt(1, id);
+            statement.setInt(1, incomeDto.getId());
             int affectedRows = statement.executeUpdate();
             if (affectedRows == 0) {
                 throw new DAOException("Error al eliminar el ingreso, ninguna fila fue afectada.");

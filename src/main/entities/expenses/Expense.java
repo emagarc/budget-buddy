@@ -53,7 +53,7 @@ public class Expense extends Transaction {
 
     @Override
     public String toString() {
-        return "ExpenseDto{" +
+        return "Expense{" +
                 "amount=" + amount +
                 ", categoryId=" + categoryId +
                 ", date='" + date + '\'' +

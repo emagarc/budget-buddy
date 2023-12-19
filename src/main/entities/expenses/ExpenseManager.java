@@ -12,6 +12,7 @@ import main.exceptions.ExpenseCreationException;
 import main.exceptions.ExpenseNotFoundException;
 import main.interfaces.transaction.TransactionCategory;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -56,13 +57,32 @@ public class ExpenseManager extends TransactionManager<Expense> implements Expen
                         // Otros parámetros si los hay
                 );
 
-                expenseDao.delete(expenseToRemoveDto);
+                expenseDao.delete(expenseToRemoveDto.getId()); // Usar el ID en lugar del objeto completo
                 return expenseToRemove;
             } else {
                 throw new ExpenseNotFoundException("Expense not found with ID: " + expenseId);
             }
         } catch (Exception e) {
             throw new ExpenseNotFoundException("Error removing expense: " + e.getMessage());
+        }
+    }
+
+    @Override
+    public List<Expense> getUserExpenses(User user) {
+        try {
+            UserDto userDto = mapUsertoUserDto(user);
+            List<ExpenseDto> expenseDtos = expenseDao.getUserExpenses(userDto);
+
+            // Aquí conviertes ExpenseDto a Expense
+            List<Expense> expenses = new ArrayList<>();
+            for (ExpenseDto expenseDto : expenseDtos) {
+                expenses.add(convertExpenseDtoToExpense(expenseDto));
+            }
+
+            return expenses;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Collections.emptyList();
         }
     }
 
@@ -88,16 +108,15 @@ public class ExpenseManager extends TransactionManager<Expense> implements Expen
     @Override
     public List<Expense> getAllExpenses() {
         try {
-            return expenseDao.getAll();  // Utiliza el método getAll de ExpenseDao
-        } catch (Exception e) {
-            e.printStackTrace();
-            return Collections.emptyList();
-        }
-    }
+            List<ExpenseDto> expenseDtoList = expenseDao.getAll();
 
-    public List<Expense> getAllExpenses () {
-        try {
-            return expenseManagerDao.getAllExpenses();
+            // Convierte la lista de ExpenseDto a Expense
+            List<Expense> expenseList = new ArrayList<>();
+            for (ExpenseDto expenseDto : expenseDtoList) {
+                expenseList.add(mapExpenseDtoToExpense(expenseDto));
+            }
+
+            return expenseList;
         } catch (Exception e) {
             e.printStackTrace();
             return Collections.emptyList();
@@ -120,5 +139,24 @@ public class ExpenseManager extends TransactionManager<Expense> implements Expen
         return userDto;
     }
 
+    private Expense convertExpenseDtoToExpense(ExpenseDto expenseDto) {
+        return new Expense(
+                expenseDto.getId(),
+                expenseDto.getAmount(),
+                expenseDto.getCategoryId(),
+                expenseDto.getDate()
+        );
+    }
+
+    private Expense mapExpenseDtoToExpense(ExpenseDto expenseDto) {
+        Expense expense = new Expense();
+        expense.setId(expenseDto.getId());
+        expense.setAmount(expenseDto.getAmount());
+        expense.setCategoryId(expenseDto.getCategoryId());
+        expense.setDate(expenseDto.getDate());
+        // Otros mapeos según los atributos de ExpenseDto y Expense
+
+        return expense;
+    }
 
 }

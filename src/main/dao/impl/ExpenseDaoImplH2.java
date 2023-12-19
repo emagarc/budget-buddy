@@ -2,6 +2,7 @@ package main.dao.impl;
 
 import main.dao.ExpenseDao;
 import main.dao.dto.ExpenseDto;
+import main.dao.dto.UserDto;
 import main.entities.expenses.Expense;
 import main.entities.user.User;
 import main.exceptions.DAOException;
@@ -24,7 +25,7 @@ public class ExpenseDaoImplH2 implements ExpenseDao {
     }
 
     @Override
-    public ExpenseDto getById(int id, User requestingUser) throws DAOException {
+    public ExpenseDto getById(int id, UserDto requestingUser) throws DAOException {
         try (PreparedStatement statement = connection.prepareStatement(GET_EXPENSE_BY_ID)) {
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
@@ -32,7 +33,7 @@ public class ExpenseDaoImplH2 implements ExpenseDao {
                 ExpenseDto expenseDto = mapResultSetToExpenseDto(resultSet);
 
                 // Verifica si el userId asociado al gasto coincide con el userId de la solicitud
-                if (expenseDto.getUserId() == requestingUser.getId()) {
+                if (expenseDto.getUserId() == requestingUser.getUserId()) {
                     return expenseDto;
                 } else {
                     // Puedes lanzar una excepción indicando que el gasto no pertenece al usuario solicitante
@@ -42,6 +43,36 @@ public class ExpenseDaoImplH2 implements ExpenseDao {
             return null; // Si no se encuentra el gasto, puedes devolver null
         } catch (SQLException e) {
             throw new DAOException("Error al obtener el gasto por ID", e);
+        }
+    }
+
+    @Override
+    public ExpenseDto getByIdForAdmin(int id) throws DAOException {
+        try (PreparedStatement statement = connection.prepareStatement(GET_EXPENSE_BY_ID)) {
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                ExpenseDto expenseDto = mapResultSetToExpenseDto(resultSet);
+                return expenseDto;
+            }
+            return null; // Si no se encuentra el gasto, puedes devolver null
+        } catch (SQLException e) {
+            throw new DAOException("Error al obtener el gasto por ID para el administrador", e);
+        }
+    }
+
+    @Override
+    public List<ExpenseDto> getUserExpenses(UserDto userDto) throws DAOException {
+        try (PreparedStatement statement = connection.prepareStatement(GET_ALL_USER_EXPENSES)) {
+            statement.setInt(1, userDto.getUserId());
+            ResultSet resultSet = statement.executeQuery();
+            List<ExpenseDto> expenses = new ArrayList<>();
+            while (resultSet.next()) {
+                expenses.add(mapResultSetToExpenseDto(resultSet));
+            }
+            return expenses;
+        } catch (SQLException e) {
+            throw new DAOException("Error al obtener la lista de gastos para el usuario", e);
         }
     }
 
