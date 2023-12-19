@@ -1,10 +1,9 @@
 package main.dao.impl;
 
-import main.dao.ExpenseDao;
+import main.dao.interfaces.ExpenseDao;
 import main.dao.dto.ExpenseDto;
 import main.dao.dto.UserDto;
 import main.entities.expenses.Expense;
-import main.entities.user.User;
 import main.exceptions.DAOException;
 
 import java.sql.*;

@@ -1,4 +1,4 @@
-package main.dao;
+package main.dao.interfaces;
 
 import main.dao.dto.UserDto;
 import main.entities.user.User;

@@ -1,6 +1,6 @@
 package main.dao.impl;
 
-import main.dao.IncomeCategoryDao;
+import main.dao.interfaces.IncomeCategoryDao;
 import main.entities.incomes.IncomeCategory;
 import main.exceptions.DAOException;
 

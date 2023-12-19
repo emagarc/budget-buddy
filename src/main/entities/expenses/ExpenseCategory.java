@@ -33,6 +33,7 @@ public class ExpenseCategory implements TransactionCategory {
         CATEGORIES = Collections.unmodifiableSet(categories);
     }
 
+    private int id;
     private String name;
 
     public ExpenseCategory(String name) {
@@ -41,6 +42,16 @@ public class ExpenseCategory implements TransactionCategory {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override

@@ -1,4 +1,4 @@
-package main.dao;
+package main.dao.interfaces;
 
 import main.entities.incomes.IncomeCategory;
 import main.exceptions.DAOException;

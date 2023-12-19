@@ -1,8 +1,10 @@
 package main.entities.incomes;
 
-import main.dao.*;
 import main.dao.dto.IncomeDto;
 import main.dao.dto.UserDto;
+import main.dao.interfaces.IncomeDao;
+import main.dao.interfaces.IncomeManagerDao;
+import main.dao.interfaces.UserDao;
 import main.entities.summary.FinancialStatement;
 import main.entities.summary.FinancialSummary;
 import main.entities.transactions.TransactionManager;

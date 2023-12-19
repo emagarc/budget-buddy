@@ -1,7 +1,7 @@
 package main.entities.expenses;
 
-import main.dao.ExpenseDao;
-import main.dao.UserDao;
+import main.dao.interfaces.ExpenseDao;
+import main.dao.interfaces.UserDao;
 import main.dao.dto.ExpenseDto;
 import main.dao.dto.UserDto;
 import main.entities.summary.FinancialStatement;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import main.dao.ExpenseManagerDao;
+import main.dao.interfaces.ExpenseManagerDao;
 
 
 public class ExpenseManager extends TransactionManager<Expense> implements ExpenseManagerDao {

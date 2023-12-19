@@ -1,4 +1,4 @@
-package main.dao;
+package main.dao.interfaces;
 import main.entities.incomes.Income;
 import main.entities.summary.FinancialStatement;
 import main.entities.summary.FinancialSummary;

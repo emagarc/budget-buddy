@@ -1,10 +1,9 @@
 package main.dao.impl;
 
-import main.dao.IncomeDao;
+import main.dao.interfaces.IncomeDao;
 import main.dao.dto.IncomeDto;
 import main.dao.dto.UserDto;
 import main.entities.incomes.Income;
-import main.entities.user.User;
 import main.exceptions.DAOException;
 
 import java.sql.*;

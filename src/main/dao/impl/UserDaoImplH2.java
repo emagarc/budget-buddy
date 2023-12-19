@@ -1,6 +1,6 @@
 package main.dao.impl;
 
-import main.dao.UserDao;
+import main.dao.interfaces.UserDao;
 import main.dao.dto.UserDto;
 import main.exceptions.DAOException;
 

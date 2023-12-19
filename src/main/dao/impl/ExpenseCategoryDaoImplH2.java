@@ -1,6 +1,6 @@
 package main.dao.impl;
 
-import main.dao.ExpenseCategoryDao;
+import main.dao.interfaces.ExpenseCategoryDao;
 import main.entities.expenses.ExpenseCategory;
 import main.exceptions.DAOException;
 

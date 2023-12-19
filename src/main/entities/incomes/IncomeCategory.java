@@ -31,6 +31,7 @@ public class IncomeCategory implements TransactionCategory {
         CATEGORIES = Collections.unmodifiableSet(categories);
     }
 
+    private int id;
     private String name;
 
     public IncomeCategory(String name) {
@@ -47,6 +48,16 @@ public class IncomeCategory implements TransactionCategory {
         if (o == null || getClass() != o.getClass()) return false;
         IncomeCategory that = (IncomeCategory) o;
         return name.equals(that.name);
+    }
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override

@@ -1,4 +1,4 @@
-package main.dao;
+package main.dao.interfaces;
 
 import main.dao.dto.IncomeDto;
 import main.dao.dto.UserDto;
